@@ -433,7 +433,8 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiUserListUserList extends Struct.CollectionTypeSchema {
   collectionName: 'user_lists';
   info: {
-    displayName: 'userlist';
+    description: 'Stores student academic, contact, and personal details';
+    displayName: 'User List (Student Profile)';
     pluralName: 'user-lists';
     singularName: 'user-list';
   };
@@ -441,26 +442,35 @@ export interface ApiUserListUserList extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.Text;
     course: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    department: Schema.Attribute.String;
+    dob: Schema.Attribute.Date;
+    email: Schema.Attribute.Email;
+    emergencyContact: Schema.Attribute.String;
+    gender: Schema.Attribute.Enumeration<['Male', 'Female', 'Other']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::user-list.user-list'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    rollNumber: Schema.Attribute.String;
+    rollNumber: Schema.Attribute.String & Schema.Attribute.Required;
+    semester: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     user: Schema.Attribute.Relation<
       'oneToOne',
       'plugin::users-permissions.user'
-    >;
+    > &
+      Schema.Attribute.Required;
     userType: Schema.Attribute.String & Schema.Attribute.DefaultTo<'student'>;
   };
 }

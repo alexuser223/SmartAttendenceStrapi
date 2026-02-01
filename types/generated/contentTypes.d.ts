@@ -453,9 +453,7 @@ export interface ApiUserListUserList extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    rollNo: Schema.Attribute.BigInteger &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    rollNumber: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "user-list",
     "pluralName": "user-lists",
-    "displayName": "userlist"
+    "displayName": "User List (Student Profile)",
+    "description": "Stores student academic, contact, and personal details"
   },
   "options": {
     "draftAndPublish": true
@@ -12,24 +13,62 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "rollNo": {
-      "type": "biginteger",
-      "required": true,
-      "unique": true
+
+    "rollNumber": {
+      "type": "string",
+      "required": true
     },
-    "course": {
-      "type": "string"
+
+    "email": {
+      "type": "email"
     },
+
     "userType": {
       "type": "string",
       "default": "student"
     },
+
+    "department": {
+      "type": "string"
+    },
+
+    "course": {
+      "type": "string"
+    },
+
+    "semester": {
+      "type": "integer"
+    },
+
+    "phone": {
+      "type": "string"
+    },
+
+    "emergencyContact": {
+      "type": "string"
+    },
+
+    "dob": {
+      "type": "date"
+    },
+
+    "gender": {
+      "type": "enumeration",
+      "enum": ["Male", "Female", "Other"]
+    },
+
+    "address": {
+      "type": "text"
+    },
+
     "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "required": true
     }
   }
 }

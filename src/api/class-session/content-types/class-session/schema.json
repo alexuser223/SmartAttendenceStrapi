@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "class_sessions",
+  "info": {
+    "singularName": "class-session",
+    "pluralName": "class-sessions",
+    "displayName": "Class Session"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "subject": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subject.subject",
+      "required": true
+    },
+    "teacher": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "required": true
+    },
+    "sessionCode": {
+      "type": "string",
+      "required": true
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "radius": {
+      "type": "integer",
+      "default": 50
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "closed"],
+      "default": "active"
+    }
+  }
+}
